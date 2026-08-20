@@ -24,6 +24,10 @@ This is a frontend demo, not a production storefront:
 - **Catalog comes from a public demo API** ([dummyjson.com](https://dummyjson.com)), converted to PHP pricing at fetch time. There's no backend of my own and no admin/inventory system.
 - **No authentication or user accounts.** Cart and wishlist are scoped to the browser via `localStorage`, not to a logged-in user.
 
+## Lighthouse scores
+Performance 90-99 · Accessibility 95 · Best Practices 100 · SEO 92
+(measured locally via Chrome DevTools, incognito)
+
 ## Scripts
 
 ```
