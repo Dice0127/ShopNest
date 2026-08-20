@@ -4,6 +4,8 @@
 
 A React + Vite storefront demo: product browsing, filters, cart, wishlist, and a multi-step checkout flow, priced in PHP.
 
+**Live demo:** [shop-nest-ten-rho.vercel.app](https://shop-nest-ten-rho.vercel.app/)
+
 ![ShopNest screenshot](./docs/screenshot.png)
 
 Built to practice production-style frontend patterns beyond typical tutorial projects — real routing, state persistence, and test coverage on a full storefront flow (browse → filter → cart → checkout).
