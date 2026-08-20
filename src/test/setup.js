@@ -1,12 +1,13 @@
 import "@testing-library/jest-dom";
 
-// Node 22+ ships an experimental built-in `localStorage`, and newer jsdom
-// versions try to delegate window.localStorage to it. Without the
-// --localstorage-file flag that delegation silently fails, leaving
-// window.localStorage undefined in tests (surfaces as errors like
-// "Cannot read properties of undefined (reading 'clear')"). This installs
-// a small in-memory Storage polyfill only when the real one isn't usable,
-// so tests behave like a normal browser regardless of Node/jsdom version.
+// Node 22+ ships an experimental built-in `localStorage` that persists to a
+// real file on disk. jsdom may delegate window.localStorage to it, which
+// means data written by one test file can leak into the next test file
+// within the same CI run (surfaces as flaky "expected [] but received
+// [stale data]" failures). To keep tests isolated and behave like a normal
+// in-memory browser storage regardless of Node/jsdom version, we always
+// install a fresh in-memory Storage polyfill rather than trusting whatever
+// localStorage the environment already provides.
 function createMemoryStorage() {
   let store = new Map();
   return {
@@ -27,29 +28,23 @@ function createMemoryStorage() {
   };
 }
 
-function ensureWorkingStorage(propertyName) {
-  const current = typeof window !== "undefined" ? window[propertyName] : undefined;
-  let isWorking = false;
-  if (current && typeof current.clear === "function") {
-    try {
-      current.setItem("__storage_test__", "1");
-      current.removeItem("__storage_test__");
-      isWorking = true;
-    } catch {
-      isWorking = false;
-    }
-  }
-  if (!isWorking) {
-    Object.defineProperty(window, propertyName, {
-      value: createMemoryStorage(),
-      writable: true,
-      configurable: true,
-    });
-  }
+function installMemoryStorage(propertyName) {
+  Object.defineProperty(window, propertyName, {
+    value: createMemoryStorage(),
+    writable: true,
+    configurable: true,
+  });
 }
 
 if (typeof window !== "undefined") {
-  ensureWorkingStorage("localStorage");
-  ensureWorkingStorage("sessionStorage");
+  installMemoryStorage("localStorage");
+  installMemoryStorage("sessionStorage");
 }
 
+// Belt-and-suspenders: also reset storage before every individual test, in
+// case a test file imports modules that cache a reference to storage before
+// this setup file runs, or a previous test left data behind.
+beforeEach(() => {
+  window.localStorage?.clear();
+  window.sessionStorage?.clear();
+});
