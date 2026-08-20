@@ -1,0 +1,86 @@
+:root {
+  --blue: #2F5EE8;
+  --blue-dark: #2249BE;
+  --blue-tint: #EEF3FE;
+  --ink: #14181F;
+  --ink-soft: #5B6472;
+  --line: #E6E8EC;
+  --surface: #FFFFFF;
+  --bg: #F7F8FA;
+  --danger: #E4483E;
+  --success: #15803D;
+  --star: #F5A623;
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(20, 24, 31, 0.06);
+  --shadow-md: 0 8px 24px -8px rgba(20, 24, 31, 0.18);
+  --shadow-lg: 0 20px 60px -12px rgba(20, 24, 31, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+input, select, textarea { font-family: inherit; }
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 22px; border-radius: var(--radius-sm); border: none;
+  font-weight: 600; font-size: 14px;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease, border-color .15s ease;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary { background: var(--blue); color: #fff; box-shadow: var(--shadow-sm); }
+.btn-primary:hover:not(:disabled) { background: var(--blue-dark); }
+
+.btn-outline { background: #fff; border: 1px solid var(--line); color: var(--ink); }
+.btn-outline:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
+
+.btn-ghost { background: transparent; color: var(--ink-soft); }
+.btn-ghost:hover { color: var(--ink); }
+
+.btn-block { width: 100%; }
+
+*:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* Visually hidden but still announced by screen readers — used for
+   fieldset legends and similar labels that would be visually redundant. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+::selection { background: var(--blue); color: #fff; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes shimmer { 0% { background-position: -300px 0; } 100% { background-position: 300px 0; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes cartBump { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }

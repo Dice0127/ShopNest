@@ -1,0 +1,47 @@
+.discover-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 32px;
+}
+
+.discover-page-nav,
+.discover-page-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discover-page-nav:hover:not(:disabled),
+.discover-page-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.discover-page-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.discover-page-btn.is-active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.discover-page-gap {
+  width: 24px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+}

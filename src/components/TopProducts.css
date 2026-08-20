@@ -1,0 +1,150 @@
+.top-products-page {
+  padding-bottom: 60px;
+}
+
+.top-products-header {
+  margin: 8px 0 24px;
+}
+
+.top-products-header h1 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.top-products-header p {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.top-products-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+
+.top-products-tabs-scroll {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+  flex: 1;
+}
+
+.top-products-tabs-scroll::-webkit-scrollbar { display: none; }
+
+.top-products-tab {
+  flex: 0 0 auto;
+  width: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink-soft);
+  white-space: normal;
+  word-break: normal;
+}
+
+.top-products-tab:hover { color: var(--ink); }
+
+.top-products-tab.is-active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+.top-products-more {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: auto;
+  display: flex;
+}
+
+.top-products-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.top-products-menu {
+  position: absolute;
+  top: calc(100% - 2px);
+  right: 0;
+  z-index: 40;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 2px;
+  min-width: 320px;
+  animation: fadeIn 0.12s ease;
+}
+
+.top-products-menu-item {
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-products-menu-item:hover { background: var(--bg); }
+.top-products-menu-item.is-active { color: var(--blue); font-weight: 700; }
+
+.top-products-grid {
+  align-items: start;
+}
+
+.top-products-item {
+  position: relative;
+}
+
+.top-rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: rgba(30, 33, 40, 0.75);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.top-rank-badge.is-top3 {
+  background: var(--blue);
+}
+
+/* When a product also has a discount badge, push it below the rank badge
+   so the two don't stack on top of each other in the same corner. */
+.top-products-item .product-card-badge {
+  top: 38px;
+}
+
+@media (max-width: 640px) {
+  .top-products-menu {
+    right: auto;
+    left: 0;
+    grid-template-columns: 1fr;
+    min-width: 220px;
+  }
+}

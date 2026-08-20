@@ -1,0 +1,222 @@
+.filters {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  height: fit-content;
+  position: sticky;
+  top: 88px;
+}
+
+.filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.filters-header h3 { font-size: 16px; }
+
+.filters-clear {
+  background: none;
+  border: none;
+  color: var(--blue);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 0;
+}
+
+.filter-group {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+/* Filters uses <fieldset>/<legend> for two of its groups (accessibility:
+   groups related checkboxes/radios for screen readers). Fieldsets carry
+   browser-default border/padding/margin and legends have their own box
+   model — reset both so a fieldset.filter-group renders identically to
+   the plain div.filter-group groups elsewhere in this sidebar. */
+fieldset.filter-group {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+  min-width: 0;
+}
+
+.filters legend {
+  padding: 0;
+  float: none;
+  width: auto;
+}
+.filters legend.filter-group-title { margin-bottom: 12px; }
+
+.filters-header + .filter-group,
+.filters-header + fieldset.filter-group { border-top: none; padding-top: 0; }
+
+.filter-group-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.filter-all-categories {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.filter-all-categories:hover {
+  background: var(--bg);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.filter-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 0;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.filter-checkbox-row input { accent-color: var(--blue); width: 15px; height: 15px; }
+
+.filter-checkbox-row span.count {
+  margin-left: auto;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.filter-price-inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.filter-price-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-price-field span,
+.filter-price-field label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.filter-price-field input {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+
+.filter-price-field input:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+.filter-price-sep {
+  color: var(--ink-soft);
+  padding-bottom: 8px;
+}
+
+.filter-price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.filter-range {
+  width: 100%;
+  accent-color: var(--blue);
+}
+
+.filter-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filter-stars-row input { accent-color: var(--blue); }
+
+.filter-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+}
+
+.switch {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.switch-track {
+  position: absolute;
+  inset: 0;
+  background: var(--line);
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.switch-track::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.switch input:checked + .switch-track { background: var(--blue); }
+.switch input:checked + .switch-track::before { transform: translateX(16px); }
+
+@media (max-width: 960px) {
+  .filters { position: static; }
+}
+
+.filter-categories-scroll {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.filter-categories-scroll::-webkit-scrollbar { width: 6px; }
+.filter-categories-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.filter-categories-scroll::-webkit-scrollbar-track { background: transparent; }
