@@ -6,6 +6,10 @@ A React + Vite storefront demo: product browsing, filters, cart, wishlist, and a
 
 ![ShopNest screenshot](./docs/screenshot.png)
 
+Built to practice production-style frontend patterns beyond typical tutorial projects — real routing, state persistence, and test coverage on a full storefront flow (browse → filter → cart → checkout).
+
+**Tech stack:** React 19 · TypeScript · Vite · React Router · Vitest + React Testing Library
+
 ## Stack notes
 
 - **Routing**: React Router (`react-router-dom`) — real URLs per page (`/`, `/shop`, `/product/:id`, `/wishlist`, `/checkout`), shareable/deep-linkable, browser back/forward works.
