@@ -1,6 +1,10 @@
+![CI](https://github.com/Dice0127/ShopNest/actions/workflows/ci.yml/badge.svg)
+
 # ShopNest
 
 A React + Vite storefront demo: product browsing, filters, cart, wishlist, and a multi-step checkout flow, priced in PHP.
+
+![ShopNest screenshot](./docs/screenshot.png)
 
 ## Stack notes
 
@@ -19,29 +23,10 @@ This is a frontend demo, not a production storefront:
 ## Scripts
 
 ```
-npm run dev        # start dev server
-npm run build       # production build
-npm run preview     # preview the production build
-npm test            # run the test suite once
-npm run test:watch  # run tests in watch mode
-npm run lint         # oxlint
+npm run dev          # start dev server
+npm run build         # production build
+npm run preview       # preview the production build
+npm test              # run the test suite once
+npm run test:watch    # run tests in watch mode
+npm run lint           # oxlint
 ```
-
----
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
